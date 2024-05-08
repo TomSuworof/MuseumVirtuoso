@@ -1,4 +1,4 @@
-package com.salat;
+package com.salat.queries;
 
 import com.salat.config.Configs;
 import org.apache.jena.query.Query;
@@ -10,20 +10,31 @@ import virtuoso.jena.driver.VirtGraph;
 import virtuoso.jena.driver.VirtuosoQueryExecution;
 import virtuoso.jena.driver.VirtuosoQueryExecutionFactory;
 
-public class App {
+public class Query2 {
     public static void main(String[] args) {
         VirtGraph set = new VirtGraph(Configs.getUrl(), Configs.getUsername(), Configs.getPassword());
 
-        Query sparql = QueryFactory.create("SELECT * FROM <urn:graph:suvorov> WHERE {?s ?p ?o}");
+        Query sparql = QueryFactory.create("""
+                Prefix owl:	    <http://www.w3.org/2002/07/owl#>
+                Prefix rdf:	    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+                Prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+                Prefix ent:	    <http://www.menthor.net/myontology#>
+                \s
+                SELECT ?ind ?type
+                FROM <urn:graph:suvorov>
+                WHERE {
+                    ?ind rdf:type ?type .
+                    ?type rdfs:subClassOf ent:Ticket
+                }
+                """);
 
         try (VirtuosoQueryExecution vqe = VirtuosoQueryExecutionFactory.create(sparql, set)) {
             ResultSet results = vqe.execSelect();
             while (results.hasNext()) {
                 QuerySolution result = results.nextSolution();
-                RDFNode s = result.get("s");
-                RDFNode p = result.get("p");
-                RDFNode o = result.get("o");
-                System.out.printf("{%s %s %s}%n", s.toString(), p.toString(), o.toString());
+                RDFNode ind = result.get("ind");
+                RDFNode type = result.get("type");
+                System.out.printf("{%s %s}%n", ind.toString(), type.toString());
             }
         }
     }
