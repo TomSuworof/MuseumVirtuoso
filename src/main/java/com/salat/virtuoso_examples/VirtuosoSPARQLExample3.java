@@ -8,6 +8,10 @@ import virtuoso.jena.driver.VirtGraph;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Node#createURI -> NodeFactory#createURI
+ * new Triple() -> Triple#create
+ */
 public class VirtuosoSPARQLExample3 {
     public static void main(String[] args) {
         String url;

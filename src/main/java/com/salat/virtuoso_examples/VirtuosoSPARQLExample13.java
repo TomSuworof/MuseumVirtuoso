@@ -12,6 +12,9 @@ import virtuoso.jena.driver.VirtuosoQueryExecutionFactory;
 
 import java.util.StringTokenizer;
 
+/**
+ * {@link NodeCreateUtils} is a class from tests, so we should add dependency to jena-core tests.
+ */
 public class VirtuosoSPARQLExample13 {
     /**
      * Executes a SPARQL query against a virtuoso url and prints results.

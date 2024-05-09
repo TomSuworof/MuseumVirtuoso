@@ -63,6 +63,5 @@ public class VirtuosoSPARQLExample5 {
         }
 
         graph.clear();
-
     }
 }
