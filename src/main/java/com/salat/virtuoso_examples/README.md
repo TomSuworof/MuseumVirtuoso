@@ -6,3 +6,5 @@ adapted for modern library version and modern Java.
 
 The only substantial difference — I replaced password to DB to my own. If you want to play with these examples,
 you might want to change credentials as well.
+
+See [Runner](Runner.java) to run all examples sequentially.
