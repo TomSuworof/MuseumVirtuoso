@@ -26,7 +26,7 @@ public record Ticket(
                 createTriple(myOntologyPrefix + ticketName, myOntologyPrefix + "type2", String.format("\"%s\"", visitor().type().getLowerCase()))
         ));
         triples.addAll(visitor().toTriples());
-        triples.add(createTriple(myOntologyPrefix + visitor().name(), myOntologyPrefix + "ticket", myOntologyPrefix + ticketName));
+        triples.add(createTriple(myOntologyPrefix + visitor().name() + "Visitor", myOntologyPrefix + "ticket", myOntologyPrefix + ticketName));
         return triples;
     }
 }
