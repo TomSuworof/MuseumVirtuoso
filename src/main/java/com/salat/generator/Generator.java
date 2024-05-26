@@ -1,5 +1,7 @@
 package com.salat.generator;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.salat.config.Configs;
 import org.apache.jena.graph.GraphUtil;
 import org.apache.jena.graph.Node;
@@ -74,8 +76,13 @@ public class Generator {
         }
     }
 
-    public static void main(String[] args) {
-        Ticket ticket = getTicketFromCommandLine();
+    public static void main(String[] args) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        Ticket ticket = getBaseTicket();//getTicketFromCommandLine();
+
+//        System.out.println(mapper.writeValueAsString(ticket));
+//
+//        if (true) return;
 
         if (ticket == null) {
             System.out.println("Wrong ticket");

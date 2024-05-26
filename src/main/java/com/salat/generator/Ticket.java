@@ -20,7 +20,7 @@ public record Ticket(
         List<Triple> triples = new LinkedList<>();
         triples.addAll(List.of(
                 createTriple(myOntologyPrefix + ticketName, rdfsPrefix + "type", owlPrefix + "NamedIndividual"),
-                createTriple(myOntologyPrefix + ticketName, rdfsPrefix + "type", myOntologyPrefix + visitor().type().getCapitalized() + "_ticket"),
+                createTriple(myOntologyPrefix + ticketName, rdfsPrefix + "type", myOntologyPrefix + visitor().type().getLowerCase() + "_ticket"),
                 createTriple(myOntologyPrefix + ticketName, myOntologyPrefix + "number", number()),
                 createTriple(myOntologyPrefix + ticketName, myOntologyPrefix + "price", price()),
                 createTriple(myOntologyPrefix + ticketName, myOntologyPrefix + "type2", String.format("\"%s\"", visitor().type().getLowerCase()))
