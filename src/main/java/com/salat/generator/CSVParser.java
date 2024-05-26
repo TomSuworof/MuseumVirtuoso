@@ -26,7 +26,7 @@ public class CSVParser {
 
     public static List<Ticket> getTicketsFromCSVFile(String fileName) {
         try {
-            URL resource = RmlStreamerFileAdapter.class.getResource("/" + fileName);
+            URL resource = CSVParser.class.getResource("/" + fileName);
             if (resource == null) {
                 throw new NullPointerException("Cannot load data.csv");
             }

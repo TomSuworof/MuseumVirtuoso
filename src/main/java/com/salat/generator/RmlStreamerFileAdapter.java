@@ -7,20 +7,18 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
-import java.net.Socket;
 
 public class RmlStreamerFileAdapter {
     public static void main(String[] args) throws IOException {
-        System.out.println("Waiting for client to connect...");
+        System.out.println("Waiting for RML-Streamer to connect...");
         try (
-                ServerSocket serverSocket = new ServerSocket(9999); // starts socket globally
-                Socket socket = serverSocket.accept(); // connects to socket
-                PrintWriter out = new PrintWriter(socket.getOutputStream(), true); // output to socket
-                BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)) // console input
+                ServerSocket inputSocket = new ServerSocket(9999); // start socket that will server as input for RML-Streamer
+                PrintWriter out = new PrintWriter(inputSocket.accept().getOutputStream(), true); // output to socket
+                BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in))
         ) {
             while (true) {
-                System.out.println("Enter file name, located in /src/main/resources");
-                String line = reader.readLine();
+                System.out.println("Enter file name, located in /src/main/resources. Or enter 'exit' to exit");
+                String line = consoleReader.readLine();
                 if (line.equals("exit")) break;
 
                 TicketList tickets = new TicketList(CSVParser.getTicketsFromCSVFile(line));
