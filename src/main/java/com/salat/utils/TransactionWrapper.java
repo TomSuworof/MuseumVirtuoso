@@ -1,4 +1,4 @@
-package com.salat.generator;
+package com.salat.utils;
 
 import virtuoso.jena.driver.VirtGraph;
 

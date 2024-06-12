@@ -1,5 +1,6 @@
 package com.salat.generator;
 
+import com.salat.utils.CSVParser;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
@@ -11,7 +12,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class CSVParser {
+public class TicketsCSVParser implements CSVParser<Ticket> {
     private static Ticket parseTicket(CSVRecord record) throws ParseException {
         return new Ticket(
                 new Visitor(
@@ -24,11 +25,12 @@ public class CSVParser {
         );
     }
 
-    public static List<Ticket> getTicketsFromCSVFile(String fileName) {
+    @Override
+    public List<Ticket> getEntitiesFromCSVFile(String fileName) {
         try {
-            URL resource = CSVParser.class.getResource("/" + fileName);
+            URL resource = TicketsCSVParser.class.getResource("/" + fileName);
             if (resource == null) {
-                throw new NullPointerException("Cannot load data.csv");
+                throw new NullPointerException("Cannot load file");
             }
 
             return CSVFormat.DEFAULT.builder()

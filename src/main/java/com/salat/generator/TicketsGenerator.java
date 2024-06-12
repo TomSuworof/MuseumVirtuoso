@@ -2,6 +2,7 @@ package com.salat.generator;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.salat.config.Configs;
+import com.salat.utils.TransactionWrapper;
 import org.apache.jena.graph.GraphUtil;
 import org.apache.jena.graph.Node;
 import org.apache.jena.graph.Triple;
@@ -16,7 +17,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-public class Generator {
+public class TicketsGenerator {
     private static VirtGraph getGraph() {
         return new VirtGraph(Configs.getUrl(), Configs.getUsername(), Configs.getPassword());
     }

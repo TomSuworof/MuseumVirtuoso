@@ -1,4 +1,4 @@
-package com.salat.generator;
+package com.salat.utils;
 
 import org.apache.jena.graph.Triple;
 

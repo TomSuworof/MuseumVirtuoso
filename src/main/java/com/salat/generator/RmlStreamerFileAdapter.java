@@ -21,7 +21,7 @@ public class RmlStreamerFileAdapter {
                 String line = consoleReader.readLine();
                 if (line.equals("exit")) break;
 
-                TicketList tickets = new TicketList(CSVParser.getTicketsFromCSVFile(line));
+                TicketList tickets = new TicketList(new TicketsCSVParser().getEntitiesFromCSVFile(line));
 
                 System.out.println("Ticket list object: " + tickets);
 

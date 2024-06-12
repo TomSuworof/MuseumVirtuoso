@@ -2,13 +2,14 @@ package com.salat.generator;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.salat.utils.Entity;
 import org.apache.jena.graph.Triple;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import static com.salat.generator.TripleGenerator.*;
+import static com.salat.generator.TicketsTripleGenerator.*;
 
 public record Visitor(
         String name,

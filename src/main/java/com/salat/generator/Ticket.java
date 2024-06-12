@@ -1,11 +1,12 @@
 package com.salat.generator;
 
+import com.salat.utils.Entity;
 import org.apache.jena.graph.Triple;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import static com.salat.generator.TripleGenerator.*;
+import static com.salat.generator.TicketsTripleGenerator.*;
 
 public record Ticket(
         Visitor visitor,
